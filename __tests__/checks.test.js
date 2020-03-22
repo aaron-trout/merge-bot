@@ -15,6 +15,13 @@ const checks4a = require('../__mocks__/checks/check-4a');
 
 test('empty checks data', () => {
     const pull = new Pull(payloadDefault);
+    pull.compileChecks({});
+
+    expect(pull.isChecksComplete(configDefault.checks_enabled)).toBe(false);
+});
+
+test('empty checks data', () => {
+    const pull = new Pull(payloadDefault);
     pull.compileChecks(checks0);
 
     expect(pull.isChecksComplete(configDefault.checks_enabled)).toBe(false);

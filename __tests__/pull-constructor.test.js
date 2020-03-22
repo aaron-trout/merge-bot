@@ -1,7 +1,10 @@
 const Pull = require('../lib/pull');
 
 const payloadDefault = require('../__mocks__/pull/payload-default');
+const payloadFork = require('../__mocks__/pull/payload-fork');
+
 const payloadDefaultExpected = require('../__mocks__/pull/payload-default-expected');
+const payloadForkExpected = require('../__mocks__/pull/payload-fork-expected');
 
 const payloadPullRequest = require('../__mocks__/pull_request/payload');
 const payloadPullRequestExpected = require('../__mocks__/pull/payload-pull_request-expected');
@@ -29,6 +32,14 @@ test('pull constructor, pull_request_review payload', () => {
     const pull = new Pull(payloadPullRequestReview);
     const received = JSON.stringify(pull);
     const expected = JSON.stringify(payloadPullRequestReviewExpected);
+
+    expect(received).toBe(expected);
+});
+
+test('pull constructor, fork settings', () => {
+    const pull = new Pull(payloadFork);
+    const received = JSON.stringify(pull);
+    const expected = JSON.stringify(payloadForkExpected);
 
     expect(received).toBe(expected);
 });
